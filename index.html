@@ -96,6 +96,32 @@
         transform: translateX(85px);
       }
     }
+
+    @media (max-width: 768px) {
+      .logo-container {
+        width: 500px; /* Réduire la largeur pour les tablettes */
+        height: 60px; /* Réduire la hauteur pour les tablettes */
+      }
+
+      .title {
+        font-size: 1.5rem; /* Réduire la taille de la police pour les tablettes */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-container {
+        width: 300px; /* Réduire la largeur pour les téléphones */
+        height: 36px; /* Réduire la hauteur pour les téléphones */
+      }
+
+      .title {
+        font-size: 1rem; /* Réduire la taille de la police pour les téléphones */
+      }
+
+      .wave-container {
+        height: 100px; /* Réduire la hauteur des vagues pour les téléphones */
+      }
+    }
   </style>
 </head>
 <body>
