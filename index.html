@@ -50,6 +50,13 @@
 
     .title {
       font-size: 2rem;
+      margin-bottom: 20px; /* Ajouter de l'espace sous le titre */
+    }
+
+    .countdown {
+      font-size: 2rem; /* Augmenter la taille de la police */
+      margin-top: 100px; /* Ajouter de l'espace au-dessus du compte à rebours */
+      font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif; /* Police plus ronde */
     }
 
     .wave-container {
@@ -105,6 +112,12 @@
 
       .title {
         font-size: 1.5rem; /* Réduire la taille de la police pour les tablettes */
+        margin-bottom: 15px;
+      }
+
+      .countdown {
+        font-size: 1.5rem;
+        margin-top: 30px;
       }
     }
 
@@ -116,6 +129,12 @@
 
       .title {
         font-size: 1rem; /* Réduire la taille de la police pour les téléphones */
+        margin-bottom: 10px;
+      }
+
+      .countdown {
+        font-size: 1.2rem;
+        margin-top: 70px;
       }
 
       .wave-container {
@@ -130,6 +149,7 @@
       <img src="Asset 9.png" alt="Logo" class="logo">
     </div>
     <h1 class="title">Swipez, Linkez, Prochainement...</h1>
+    <div id="countdown" class="countdown"></div> <!-- Compte à rebours -->
   </div>
   <div class="wave-container">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
@@ -143,5 +163,35 @@
       </g>
     </svg>
   </div>
+
+  <script>
+    // Définir la date de fin du compte à rebours
+    const countdownDate = new Date("November 1, 2025 00:00:00").getTime();
+
+    // Mettre à jour le compte à rebours toutes les secondes
+    const countdownFunction = setInterval(() => {
+      // Obtenir la date et l'heure actuelles
+      const now = new Date().getTime();
+
+      // Calculer la distance entre maintenant et la date de fin
+      const distance = countdownDate - now;
+
+      // Calculer les jours, heures, minutes et secondes
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Afficher le résultat dans l'élément avec l'id "countdown"
+      document.getElementById("countdown").innerHTML = days + " jours " + hours + " heures " +
+      minutes + " minutes " + seconds + " secondes ";
+
+      // Si le compte à rebours est terminé, afficher un message
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "C'est terminé!";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
